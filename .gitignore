@@ -219,3 +219,6 @@ __marimo__/
 
 # SolidWorks lock files
 ~$*
+
+# 个人工作文档（含迭代日志），不进仓库；对外版以 README.md 为准
+SROI-手持数采装置 3D模型&装配说明&BOM清单.md
