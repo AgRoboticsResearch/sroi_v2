@@ -1,137 +1,139 @@
-# BOM — SROI 手持数采装置 / 草莓采摘末端执行器
+# BOM — SROI Handheld Data-Acquisition Device / Strawberry-Harvesting End Effector
 
-> 本文件是物料清单的**唯一权威来源**，`README.md` 通过链接引用本文件。
-> 调整数量 / 规格请直接编辑本文件，无需改动 README。
+> 🌐 [中文版](BOM_ch.md)
+
+> This file is the **single source of truth** for the bill of materials; `README.md` references it by link.
+> To adjust quantities / specs, edit this file directly — no need to change the README.
 >
-> 数量已与 [装配指南](README.md#装配指南) 逐步核对；`※` = 按对称结构推断，以 SolidWorks 装配体(`.SLDASM`)为准。
-> 五金件参考模型见 `3DModel/五金件/`，仅供装配对照，**不打印**。
+> Quantities have been checked step-by-step against the [Assembly Guide](README.md#assembly-guide); `※` = inferred from the symmetric structure, defer to the SolidWorks assembly file (`.SLDASM`).
+> Hardware reference models are in `3DModel/五金件/`, for assembly reference only — **do not print**.
 
-> 默认按**手持数据采集形态**统计；关节电机形态的差异见 [第 5 节](#5-关节电机形态可选)。
+> Quantities default to the **handheld data-acquisition configuration**; differences for the joint-motor configuration are in [Section 5](#5-joint-motor-configuration-optional).
 
 ---
 
-## 1. 3D 打印件
+## 1. 3D-Printed Parts
 
-> 仅打印本节零件；导轨 / 滑块 / 轴承为外购件(见第 3 节)，其 `.SLDPRT` 仅供装配参考。
-> STL 导出件位于 `3DModel/STL/`。
+> Print only the parts in this section; rails / carriages / bearings are purchased parts (see Section 3), and their `.SLDPRT` files are for assembly reference only.
+> STL exports are in `3DModel/STL/`.
 
-| # | 名称 | 源文件 | 数量 | 备注 |
+| # | Name | Source file | Qty | Notes |
 |---|---|---|---|---|
-| 1 | 夹爪 | `夹爪.SLDPRT` | 2 | 待加装刀片槽 |
-| 2 | 转接块(滑块↔夹爪) | `转接块-转接滑块和夹爪.SLDPRT` | 2 | |
-| 3 | 连杆(摇杆↔转接块) | `连杆-连接摇杆和转接块.SLDPRT` | 2 | |
-| 4 | 摇杆-通用部分 | `摇杆-摇杆通用部分.SLDPRT` | 1 | 手持 / 电机两形态共用 |
-| 5 | 摇杆-转接手持(线性传动) | `摇杆-转接手持装置.SLDPRT` | 1 | 手持形态当前版 |
-| 6 | 摇杆-转接电机 | `摇杆-转接电机.SLDPRT` | 1 | 关节电机形态 |
-| 7 | 手持部分-核心块 | `手持部分-核心块.SLDPRT` | 1 | 含 U 型凸轮槽 + 弹簧腔 |
-| 8 | 手持部分-顶盖(全行程) | `手持部分-顶盖-全行程.SLDPRT` | 1 | 与 #9 二选一(STL 名为 `手持部分-顶盖.STL`) |
-| 9 | 手持部分-顶盖(半行程) | `手持部分-顶盖-半行程.SLDPRT` | 可选 1 | 限位用 |
-| 10 | 按钮(夹爪开合控制) | `按钮.SLDPRT` | 1 | 机械拇指按钮：按压经圆柱销带动摇杆 → 夹爪开合；与录制触发按键(电子件，见第 4 节 #6)是两个不同零件 |
-| 11 | 握把-主体 | `握把-主体.SLDPRT` | 1 | |
-| 12 | 握把-底盖 | `握把-底盖.SLDPRT` | 1 | 含 Type-C 母座腔 + 过线孔 |
-| 13 | 握把-充电口配件 | `握把-充电口配件.SLDPRT` | 1 | |
-| 14 | 相机支架-D405 | `相机支架-D405.SLDPRT` | 1 | |
-| 15 | Tracker 安装板 | `Tracker安装板.SLDPRT` | 1 | 可整体拆装 |
-| 16 | 树莓派盒子-底 | `树莓派盒子-底.SLDPRT` | 1 | |
-| 17 | 树莓派盒子-盖 | `树莓派盒子-盖.SLDPRT` | 1 | |
-| 18 | 导轨座 | `导轨座-与关节电机外法兰固定.SLDPRT` | 1 | 打印 `…(微调导轨孔位).STL`；手持/电机两形态共用 |
+| 1 | Gripper | `夹爪.SLDPRT` | 2 | Blade slot to be added |
+| 2 | Adapter block (carriage↔gripper) | `转接块-转接滑块和夹爪.SLDPRT` | 2 | |
+| 3 | Linkage (rocker↔adapter block) | `连杆-连接摇杆和转接块.SLDPRT` | 2 | |
+| 4 | Rocker — common part | `摇杆-摇杆通用部分.SLDPRT` | 1 | Shared by both handheld / motor configurations |
+| 5 | Rocker — handheld adapter (linear drive) | `摇杆-转接手持装置.SLDPRT` | 1 | Current version for handheld configuration |
+| 6 | Rocker — motor adapter | `摇杆-转接电机.SLDPRT` | 1 | Joint-motor configuration |
+| 7 | Handheld part — core block | `手持部分-核心块.SLDPRT` | 1 | Includes U-cam slot + spring cavity |
+| 8 | Handheld part — top cover (full-stroke) | `手持部分-顶盖-全行程.SLDPRT` | 1 | Choose one of #8 / #9 (STL named `手持部分-顶盖.STL`) |
+| 9 | Handheld part — top cover (half-stroke) | `手持部分-顶盖-半行程.SLDPRT` | optional 1 | For travel limiting |
+| 10 | Button (gripper open/close control) | `按钮.SLDPRT` | 1 | Mechanical thumb button: pressing drives the rocker via the cylindrical pin → gripper opens/closes; a different part from the recording-trigger button (an electronic part, see Section 4 #6) |
+| 11 | Grip — main body | `握把-主体.SLDPRT` | 1 | |
+| 12 | Grip — bottom cover | `握把-底盖.SLDPRT` | 1 | Includes Type-C receptacle cavity + cable passthrough |
+| 13 | Grip — charging-port fitting | `握把-充电口配件.SLDPRT` | 1 | |
+| 14 | Camera mount — D405 | `相机支架-D405.SLDPRT` | 1 | |
+| 15 | Tracker mounting plate | `Tracker安装板.SLDPRT` | 1 | Removable as a unit |
+| 16 | Raspberry Pi case — bottom | `树莓派盒子-底.SLDPRT` | 1 | |
+| 17 | Raspberry Pi case — top | `树莓派盒子-盖.SLDPRT` | 1 | |
+| 18 | Rail base | `导轨座-与关节电机外法兰固定.SLDPRT` | 1 | Print `…(微调导轨孔位).STL`; shared by both handheld / motor configurations |
 
 ---
 
-## 2. 紧固件与五金
+## 2. Fasteners and Hardware
 
-> **头型**：杯头内六角 = 圆柱头(DIN 912 / ISO 4762)；沉头内六角 = 平头沉孔(DIN 7991 / ISO 10642)；平头内六角 = 大平头。
-> **打塞螺丝** = 台阶螺丝(shoulder screw)，规格写为 `M4 × 光杆Φ5 × 光杆长`；本设计全程未用热熔螺母，机牙螺丝直接自攻拧入 3D 打印件。
-> 参考模型目录：`3DModel/五金件/`。
+> **Head types**: 杯头内六角 (socket head) = cylindrical head (DIN 912 / ISO 4762); 沉头内六角 = flat/countersunk head (DIN 7991 / ISO 10642); 平头内六角 = large flat head.
+> **打塞螺丝 (shoulder screw)** = step screw (shoulder screw), spec written as `M4 × shoulder Φ5 × shoulder length`; no heat-set inserts are used anywhere in this design — machine screws self-tap directly into the 3D-printed parts.
+> Reference-model directory: `3DModel/五金件/`.
 
-### 2.1 杯头内六角(圆柱头)
+### 2.1 Socket-head hex (cylindrical head)
 
-| 规格 | 数量 | 用途 |
+| Spec | Qty | Use |
 |---|---|---|
-| M2 × 6 | 2 | 按钮 → MGN5 滑块(步骤六) |
-| M3 × 6 | 11 | 树莓派 → 盒子-底 ×2(步骤一)；转接板 → MGN9 滑块 ×8(步骤三)；充电口配件 → 握把底盖 ×1(步骤五) |
-| M3 × 8 | 19 | 摇杆两部分组合 ×4(步骤二)；夹爪 → 转接板 ×8(步骤三)；夹爪导轨 → 导轨座 ×4(步骤七)、握把 → 核心块 ×3(步骤六) |
-| M3 × 10 | 4 | 导轨座 → 核心块 ×4(步骤六) |
-| M3 × 12 | 3 | 相机支架 → 导轨座 ×3(步骤七，拧入预埋螺母) |
+| M2 × 6 | 2 | Button → MGN5 carriage (Step 6) |
+| M3 × 6 | 11 | Raspberry Pi → case-bottom ×2 (Step 1); adapter plate → MGN9 carriage ×8 (Step 3); charging-port fitting → grip bottom cover ×1 (Step 5) |
+| M3 × 8 | 19 | Rocker two-part combine ×4 (Step 2); gripper → adapter plate ×8 (Step 3); gripper rail → rail base ×4 (Step 7); grip → core block ×3 (Step 6) |
+| M3 × 10 | 4 | Rail base → core block ×4 (Step 6) |
+| M3 × 12 | 3 | Camera mount → rail base ×3 (Step 7, driven into pre-inserted nuts) |
 
-### 2.2 沉头内六角(平头)
+### 2.2 Countersunk-head hex (flat head)
 
-| 规格 | 数量 | 用途 |
+| Spec | Qty | Use |
 |---|---|---|
-| M3 × 8 | 6 | D405 → 相机支架 ×2(步骤四)；录制按键 → 握把 ×2、握把底盖 → 握把 ×2(步骤五) |
-| M3 × 10 | 4 | 盒子顶盖 → 底座 ×2(步骤一)；树莓派盒子 → 握把 ×2(步骤七) |
-| M3 × 12 | 2 ※(选配) | Tracker 转接板 → 相机支架侧面 ×2(步骤四，仅用 Tracker 时) |
+| M3 × 8 | 6 | D405 → camera mount ×2 (Step 4); recording button → grip ×2, grip bottom cover → grip ×2 (Step 5) |
+| M3 × 10 | 4 | Case top cover → base ×2 (Step 1); Raspberry Pi case → grip ×2 (Step 7) |
+| M3 × 12 | 2 ※ (optional) | Tracker adapter plate → camera-mount side ×2 (Step 4, only when using the Tracker) |
 
-### 2.3 平头内六角(大平头)
+### 2.3 Flat-head hex (large flat head)
 
-| 规格 | 数量 | 用途 |
+| Spec | Qty | Use |
 |---|---|---|
-| M4 × 10 | 2 | 核心块顶盖 ×2(步骤六) |
-| 1/4″-20 UNC × 5/16″ (≈ M6.35 × 7.94) | 1(选配) | Tracker → 转接板中心 ×1(步骤四，1/4″ 标准螺纹) |
+| M4 × 10 | 2 | Core-block top cover ×2 (Step 6) |
+| 1/4″-20 UNC × 5/16″ (≈ M6.35 × 7.94) | 1 (optional) | Tracker → adapter-plate center ×1 (Step 4, 1/4″ standard thread) |
 
-### 2.4 内六角打塞螺丝(台阶螺丝，M4 / 光杆 Φ5)
+### 2.4 Hex shoulder screw (step screw, M4 / shoulder Φ5)
 
-| 规格 | 数量 | 用途 |
+| Spec | Qty | Use |
 |---|---|---|
-| M4 × Φ5 × 6(光杆长 6) | 4 | 摇杆摇臂自攻 ×2(步骤二)；连杆 → 转接板自攻 ×2(步骤三) |
-| M4 × Φ5 × 12(光杆长 12) | 1 | 手持摇杆中心转轴 ×1，穿两组法兰轴承拧入核心块(步骤二) |
+| M4 × Φ5 × 6 (shoulder length 6) | 4 | Rocker-arm self-tapping ×2 (Step 2); linkage → adapter plate self-tapping ×2 (Step 3) |
+| M4 × Φ5 × 12 (shoulder length 12) | 1 | Handheld rocker center pivot ×1, passes through two sets of flanged bearings and drives into the core block (Step 2) |
 
-### 2.5 销 / 螺母 / 铜柱 / 垫圈 / 弹簧
+### 2.5 Pins / nuts / standoffs / washers / springs
 
-| 名称 | 规格 | 数量 | 用途 |
+| Name | Spec | Qty | Use |
 |---|---|---|---|
-| 外螺纹圆柱销 | M3 × 5(螺纹长约 4，圆柱销 Φ4×5) | 1 | 按钮转销，滑入摇杆 U 型槽(步骤六) |
-| 普通螺母 | M3 | 7 | 录制按键铜柱 ×2(步骤五)；导轨座预埋 ×3(步骤六)；Tracker 转接板预埋 ×2 ※(选配，步骤四) |
-| 单通铜柱 | M3 × 6+3 | 2 | 录制按键 ×2(步骤五) |
-| 平垫圈 | 2 × 4 × 0.5(内×外×厚) | 2 | 按钮 → 滑块锁紧面(步骤六) |
-| 轴承端面平垫圈 | 5 × 8 × 0.5 | 1 | 手持摇杆尾部轴承与核心块隔离(步骤二) |
-| 压簧 | 0.6 × 8.5 × 45(线径×外径×长度) | 1 | 按钮回复，间接提供夹爪张开回复力(步骤六) |
-| MGN5 导轨专用螺丝 | M2 × 7(圆头十字) | 3 | MGN5 导轨 → 核心块(步骤六，普通 M2 机牙螺丝可能不适配，需用专用螺丝) |
+| Externally threaded cylindrical pin | M3 × 5 (thread length ~4, pin Φ4×5) | 1 | Button pivot pin, slides into the rocker U-slot (Step 6) |
+| Plain nut | M3 | 7 | Recording-button standoffs ×2 (Step 5); rail base pre-inserted ×3 (Step 6); Tracker adapter plate pre-inserted ×2 ※ (optional, Step 4) |
+| Single-pass standoff | M3 × 6+3 | 2 | Recording button ×2 (Step 5) |
+| Flat washer | 2 × 4 × 0.5 (inner × outer × thick) | 2 | Button → carriage clamping face (Step 6) |
+| Bearing-face flat washer | 5 × 8 × 0.5 | 1 | Spacer between handheld-rocker tail bearing and core block (Step 2) |
+| Compression spring | 0.6 × 8.5 × 45 (wire dia × outer dia × length) | 1 | Button return, indirectly provides the gripper-open return force (Step 6) |
+| MGN5-rail-dedicated screw | M2 × 7 (pan-head Phillips) | 3 | MGN5 rail → core block (Step 6, ordinary M2 machine screws may not fit — dedicated screw required) |
 
 ---
 
-## 3. 机械标准件(外购)
+## 3. Mechanical Standard Parts (purchased)
 
-| # | 名称 | 规格 | 数量 | 备注 |
+| # | Name | Spec | Qty | Notes |
 |---|---|---|---|---|
-| 1 | 直线导轨 | MGN9，156 mm | 1 | 主夹爪导轨；计划改短以缩小开度 |
-| 2 | 直线导轨滑块 | MGN9C | 2 | 左右各一 |
-| 3 | 直线导轨 | MGN5，40 mm | 1 | 按钮直线传动 |
-| 4 | 直线导轨滑块 | MGN5C | 1 | 按钮滑块(文档中称 N5 标准块) |
-| 5 | 法兰轴承 | MR115，5 × 11 × 5(内×外×高，法兰 Φ12.5×1) | 6 | 手持摇杆转轴 ×2(步骤二)；连杆 ×4(步骤三) |
-| 6 | 夹爪刀片 | — | 待定 | 剪断草莓茎；夹爪尚未做刀片槽 |
+| 1 | Linear guide rail | MGN9, 156 mm | 1 | Main gripper rail; planned to be shortened to reduce opening |
+| 2 | Linear guide carriage | MGN9C | 2 | One left, one right |
+| 3 | Linear guide rail | MGN5, 40 mm | 1 | Button linear drive |
+| 4 | Linear guide carriage | MGN5C | 1 | Button carriage (referred to as the N5 standard block in the docs) |
+| 5 | Flanged bearing | MR115, 5 × 11 × 5 (inner × outer × height, flange Φ12.5×1) | 6 | Handheld rocker pivot ×2 (Step 2); linkages ×4 (Step 3) |
+| 6 | Gripper blade | — | TBD | Cuts the strawberry stem; the gripper does not yet have a blade slot |
 
 ---
 
-## 4. 电子元器件
+## 4. Electronic Components
 
-| # | 名称 | 规格 | 数量 | 备注 |
+| # | Name | Spec | Qty | Notes |
 |---|---|---|---|---|
-| 1 | 深度相机 | Intel RealSense D405 | 1 | 主相机 |
-| 2 | 空间定位 Tracker | — | 1(选配) | 装于相机正后方，可整体拆下；不用 ORB-SLAM 时使用 |
-| 3 | 主控板 | Raspberry Pi(40-pin 排针) | 1 | 4 个固定孔需 Φ3 钻头扩孔 |
-| 4 | 显示屏 | 墨水屏(e-ink) | 1 | |
-| 5 | 电池组 | 2 节 18650 并联，自带升降压芯片，5V/5A Type-C 输出 + Type-C 充电口 | 1 | 整体嵌入握把；充电口(Type-C 母座)由握把底盖 + 充电口配件约束，输出端(Type-C 公头)与录制按键导线同走底盖过线孔。两个 Type-C 口均为电池组自带，非另购件 |
-| 6 | 录制触发按键 | 3-pin(电子件，需另购) | 1 | 安装于握把内部，3-pin 线预焊到树莓派针脚，触发数据录制；与机械按钮(夹爪开合，见第 1 节 #10)是两个不同零件 |
-| 7 | 导线 | — | 若干 | 穿充电口配件 U 型槽 / 握把过线孔 |
+| 1 | Depth camera | Intel RealSense D405 | 1 | Main camera |
+| 2 | Spatial-tracking Tracker | — | 1 (optional) | Mounted directly behind the camera, removable as a unit; used when not using ORB-SLAM |
+| 3 | Main control board | Raspberry Pi (40-pin header) | 1 | The 4 mounting holes need to be enlarged with a Φ3 drill bit |
+| 4 | Display | E-ink display | 1 | |
+| 5 | Battery pack | 2× 18650 in parallel, with built-in buck-boost chip, 5V/5A Type-C output + Type-C charging port | 1 | Embedded in the grip; the charging port (Type-C receptacle) is constrained by the grip bottom cover + charging-port fitting, and the output end (Type-C plug) is routed through the bottom-cover cable passthrough together with the recording-button wires. Both Type-C ports are part of the battery pack, not purchased separately |
+| 6 | Recording-trigger button | 3-pin (electronic part, must be purchased separately) | 1 | Mounted inside the grip; the 3-pin wire is pre-soldered to the Raspberry Pi pins and triggers data recording; a different part from the mechanical button (gripper open/close, see Section 1 #10) |
+| 7 | Wire | — | some | Routes through the charging-port fitting U-slot / grip cable passthrough |
 
 ---
 
-## 5. 关节电机形态(可选)
+## 5. Joint-Motor Configuration (optional)
 
-将「手持数据采集形态」改为挂载机械臂的「关节电机形态」时，替换 / 增减如下，其余(夹爪、连杆、导轨、导轨座)共用：
+When changing from the "handheld data-acquisition configuration" to the "joint-motor configuration" mounted on a robotic arm, replace / add as follows; everything else (gripper, linkages, rails, rail base) is shared:
 
-| 项 | 手持形态 | 关节电机形态 |
+| Item | Handheld config | Joint-motor config |
 |---|---|---|
-| 驱动源 | 核心块 + 按钮 + 握把 + 树莓派盒子 | **关节电机 ×1**(外法兰固定于导轨座，扭矩需足够剪断草莓茎) |
-| 摇杆转接件 | `摇杆-转接手持装置.SLDPRT` | `摇杆-转接电机.SLDPRT` |
-| 摇杆 → 驱动法兰 | — | 增补 **4 × 杯头内六角 M3 × 8**(电机转子法兰 6 孔中用 4 个，步骤二.4) |
-| 手持摇杆中心转轴 | 打塞螺丝 M4×Φ5×12 + 法兰轴承 ×2 + 平垫圈 | 不需要 |
+| Drive source | Core block + button + grip + Raspberry Pi case | **Joint motor ×1** (outer flange fixed to the rail base; torque must be sufficient to cut the strawberry stem) |
+| Rocker adapter | `摇杆-转接手持装置.SLDPRT` | `摇杆-转接电机.SLDPRT` |
+| Rocker → drive flange | — | Add **4 × socket-head hex M3 × 8** (4 of the 6 holes in the motor-rotor flange, Step 2.4) |
+| Handheld-rocker center pivot | Shoulder screw M4×Φ5×12 + flanged bearings ×2 + flat washer | Not needed |
 
 ---
 
-## 备注
+## Notes
 
-- 本设计**全程未使用热熔螺母**：机牙螺丝直接自攻拧入 3D 打印件预设的通孔(摇杆两端 Φ3.6 通孔攻 M4；转接板 Φ2.6 通孔攻 M3 等，均带倒角便于拧入)。建议先预攻一遍螺纹再正式装配，以控制垂直度。
-- `※` 项为对称结构推断，请以装配体 `.SLDASM` 为准。
-- 顶盖 STL 文件名为 `手持部分-顶盖.STL`，对应零件 `手持部分-顶盖-全行程.SLDPRT`(全行程版)；半行程版 STL 名一致带 `-半行程` 后缀。
+- **No heat-set inserts** are used anywhere in this design: machine screws self-tap directly into the reserved through-holes of the 3D-printed parts (rocker ends Φ3.6 through-hole tapped to M4; adapter plate Φ2.6 through-hole tapped to M3, etc., all chamfered for easier driving). It is recommended to pre-tap the thread once before final assembly to control perpendicularity.
+- Items marked `※` are inferred from the symmetric structure; defer to the assembly file `.SLDASM`.
+- The top-cover STL file is named `手持部分-顶盖.STL`, corresponding to the part `手持部分-顶盖-全行程.SLDPRT` (full-stroke version); the half-stroke STL has the same name with a `-半行程` suffix.
